@@ -48,24 +48,51 @@
         </button>
 
         <!-- Quick Actions Dropdown -->
-        <div class="dropdown ms-2">
-          <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-            id="quick-actions-dropdown">
-            <i class="bi bi-plus-lg"></i>
-            <span>Create</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-quick-action" aria-labelledby="quick-actions-dropdown">
-            <li class="dropdown-header">Quick Action Shortcuts</li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> New Invoice</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i> New User</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> New Product</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> System Settings</a></li>
-          </ul>
-        </div>
-      </div>
+
+<!-- Quick Actions Dropdown -->
+<div class="dropdown ms-2">
+
+    <button
+        class="btn-quick-action dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        id="quick-actions-dropdown">
+
+        <i class="bi bi-plus-lg"></i>
+        <span>Create</span>
+
+    </button>
+
+    <ul
+        class="dropdown-menu dropdown-menu-quick-action"
+        aria-labelledby="quick-actions-dropdown">
+
+        <li class="dropdown-header">
+            MENU PERPUSTAKAAN
+        </li>
+
+        <!-- Tambah Buku -->
+        <li>
+            <a class="dropdown-item"
+               href="{{ route('admin.buku.create') }}">
+                <i class="bi bi-book"></i>
+                Tambah Buku
+            </a>
+        </li>
+
+        <!-- Lihat Data Buku -->
+        <li>
+            <a class="dropdown-item"
+               href="{{ route('admin.buku.index') }}">
+                <i class="bi bi-journal-text"></i>
+                Lihat Data Buku
+            </a>
+        </li>
+
+    </ul>
+
+</div>
 
       <!-- Mid navbar: search pill -->
       <div class="navbar-search-wrapper">

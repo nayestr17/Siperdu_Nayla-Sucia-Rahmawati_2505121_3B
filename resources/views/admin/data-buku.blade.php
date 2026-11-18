@@ -4,7 +4,14 @@
 @section('subtitle', 'Data-data buku yang tersedia di perpustakaan')
  
 @section('content')
-  <div class="table-card-custom">
+  @include('admin._alert')
+ 
+  <div class="d-flex justify-content-end mb-3">
+    <a href="{{ route('admin.buku.create') }}" class="btn-custom btn-custom-primary">
+      <i class="bi bi-plus-lg"></i> Tambah Buku
+    </a>
+  </div>
+<div class="table-card-custom">
     <div class="table-responsive">
       <table class="table-custom">
         <thead>
@@ -22,7 +29,7 @@
         <tbody>
           @forelse ($buku as $item)
             <tr>
-                  <td>{{ $loop->iteration }}</td>
+              <td>{{ $loop->iteration }}</td>
               <td class="table-product-name">{{ $item->judul }}</td>
               <td>{{ $item->penulis }}</td>
               <td>{{ $item->kategori->nama_kategori }}</td>
@@ -37,10 +44,22 @@
               </td>
               <td>
                 <div class="d-flex justify-content-center gap-2">
-                  <a href="#" class="btn-custom btn-custom-warning btn-custom-sm"><i 
-class="bi bi-pencil"></i> Edit</a>
-                  <a href="#" class="btn-custom btn-custom-danger btn-custom-sm"><i 
-class="bi bi-trash"></i> Hapus</a>
+                  <a href="{{ route('admin.buku.show', $item) }}"
+                     class="btn-custom btn-custom-primary btn-custom-sm">
+                    <i class="bi bi-eye"></i> Detail
+                  </a>
+                  <a href="{{ route('admin.buku.edit', $item) }}"
+                     class="btn-custom btn-custom-warning btn-custom-sm">
+                    <i class="bi bi-pencil"></i> Edit
+                  </a>
+                  <form action="{{ route('admin.buku.destroy', $item) }}" method="POST"
+                        onsubmit="return confirm('Hapus buku ini?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn-custom btn-custom-danger btn-custom-sm">
+                      <i class="bi bi-trash"></i> Hapus
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
